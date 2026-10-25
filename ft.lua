@@ -1,6 +1,4 @@
-local ft = {
-
-    merge = function (x, y)
+local ft = merge = function (x, y)
         local i = 1
 
         while x[i] ~= nil do
@@ -17,18 +15,21 @@ local ft = {
             if type(v) == "function" then
                     value = "[function]"
                 end
-
-                r = r .. "| " .. tostring(p):gsub("^%l", string.upper) .. ": " .. tostring(value) .. "\n"
+                r = r .. tostring(p):gsub("^%l", string.upper) .. ": " .. tostring(value) .. "\n"
             end
-        return r
+        return (r:gsub("\n$", ""))
     end,
 
     countr = function (x)
         local r = ""
             for i, v in ipairs(x) do
-                r = r .. tostring(v) .. "\n"
+                local value = v
+            if type(v) == "function" then
+                value = "[function]"
             end
-        return r
+                r = r .. tostring(value) .. "\n"
+            end
+        return (r:gsub("\n$", ""))
     end,
 
     containsr = function (x, v)
