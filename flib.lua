@@ -154,7 +154,7 @@ local flib = {
 
     ft = {
 
-        merge = function (x, y)
+        ins = function (x, y)
             local i = 1
 
             while x[i] ~= nil do
@@ -197,7 +197,7 @@ local flib = {
         end,
 
         contains = function (x, v)
-            for k, value in ipairs(x) do
+            for _, value in pairs(x) do
                 if value == v then
                     return true
                     end
